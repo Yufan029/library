@@ -1,0 +1,169 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: blanchedalmond;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: hsla(271, 69%, 75%, 0.781);
+    height: 80px;
+}
+
+header p {
+    font-size: 40px;
+    font-weight: bolder;
+}
+
+.newBookBtn {
+    height: 40px;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 5px;
+    background-color: rgb(115, 122, 214);
+    cursor: pointer;
+    transition: 25ms linear;
+}
+
+.newBookBtn:hover {
+    scale: 1.05;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: end;
+    column-gap: 10px;
+    row-gap: 20px;
+}
+
+form label {
+    padding: 4px;
+}
+
+form input {
+    justify-self: start;
+
+    border: 0.5px solid rgb(9, 216, 119);
+    border-radius: 5px;
+    padding: 4px
+}
+
+form input:hover {
+    background-color: rgb(9, 216, 119);
+}
+
+form input:active,
+form input:focus {
+    background-color: rgb(235, 223, 60);
+}
+
+.read {
+    grid-column: 2 / 3;
+    justify-self: start;
+    align-content: center;
+}
+
+.buttons {
+    grid-column: 1 / 3;
+    align-content: center;
+    justify-self: center;
+}
+
+#cancel,
+#submit {
+    width: 80px;
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: 25ms linear;
+}
+
+#cancel:hover,
+#submit:hover {
+    scale: 1.05;
+}
+
+#cancel {
+    margin-right: 10px;
+}
+
+#submit {
+    margin-left: 10px;
+}
+
+input[type='checkbox'] {
+    margin: 0 5px 0 0;
+}
+
+::backdrop {
+    background-image: linear-gradient(
+      45deg,
+      magenta,
+      rebeccapurple,
+      dodgerblue,
+      green
+    );
+    opacity: 0.75;
+}
+
+dialog {
+    border: none;
+    box-shadow: 5px 10px 10px skyblue;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    margin: 3rem;
+}
+
+.card {
+    width: 168px;
+    height: 168px;
+    padding: 10px;
+    margin: 2rem;
+    border-radius: 15px 0px;
+    position: relative;
+}
+
+.card:hover {
+    background-color: #b5ff98;
+    color:#0084ff
+}
+
+.card p {
+    padding: 0 10px;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: -17px;
+    height: 200px;
+    width: 200px;
+    border: 3px solid #4394f0;;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 200px;
+    width: 200px;
+    border: 3px solid #4394f0;;
+    border-radius: 15px;
+    z-index: 1;
+}

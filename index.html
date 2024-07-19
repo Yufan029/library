@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 <body>
+    <header>
+        <p>Library</p>
+        <button class="newBookBtn">NEW BOOK</button>
+    </header>
+    <div class="newBookForm">
+        <dialog class="popupDialog">
+            <form action="">
+                <label for="title">Title</label>
+                <input id="title" type="text" placeholder="title" required>
+                <label for="author">Author</label>
+                <input id="author" type="text" placeholder="author" required>
+                <label for="numberOfPages">Pages</label>
+                <input id="numberOfPages" type="number" min="1">
+                <div class="read">
+                    <input id="alreadyRead" type="checkbox">
+                    <label for="alreadyRead">Already read</label>
+                </div>
+                <div class="buttons">
+                    <button id="cancel">Cancel</button>
+                    <button id="submit">Submit</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+    <main>
+        <div class="cards">
+            <div class="card">
+                <p>"The Hobbit by J.R.R. Tolkien, 295 pages, not read yet"</p>
+            </div>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
