@@ -18,3 +18,5 @@ The before and after content has the z-index higher than the svg graph, the svg 
 create svg under certain namespace.
 
 3. Code still bit tangled, can be refactor for more easy for further extension and maintain.
+
+4. Not adding the remove from library array, since the data will be refresh every time when reload.
