@@ -1,4 +1,4 @@
-Live Demo: https://yufan029.github.io/library/
+Live Demo: <a href="https://yufan029.github.io/library/">Library</a>
 1. The svg cannot be click.
 
   Adding the event listener for svg, then not working, search a bit find this file:
@@ -21,3 +21,90 @@ create svg under certain namespace.
 3. Code still bit tangled, can be refactor for more easy for further extension and maintain.
 
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
+
+5. prototype, __proto__, [[prototype]]
+
+    __proto__ is [[prototype]], Object.setPrototypeOf() is setting the instance's __proto__
+
+    prototype is an ordinary property.
+
+Every Function has a prototype property.
+
+Every Object has a __proto__ property.
+
+So every function has not only prototype property, but also __proto__ property. Function is an Object.
+
+The inheritance looks like this:
+
+    instance --> Instance.prototype --> Object.prototype --> null
+
+
+how to implement?
+
+    When you create a new instance based on the factory function or class Instance, it will assign the Instance.prototype property to the new created instance's __proto__(which is [[prototype]]).
+    
+    instance.__proto__ === Instance.prototype;
+
+    instance.__proto__.__proto__ === Instance.prototype.__proto__ === Object.prototype;
+
+    instance.__proto__.__proto__.__proto__ === object.prototype.__proto__ === null;
+
+
+    Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
+
+6. super() in the subclass is calling the constructor of the class which class.__proto__ point to. 
+After resetting the Square.__proto__, the super() will call constructor in Rectangle, 
+but the inheritance chain is not changed, square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.
+
+The value is initilized before super() in the Rectangle, then copy to the new instance.
+The super() is running the constructor which Square.__proto__ point to.
+The say() function is found through the inheritance chain, so the Polygon.say() being found, but using the new created 'value' for the new instance.
+One thing worth to note is that, the arrow function, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.
+
+So the result is:
+Rectangle
+Pppppppolygon  2
+2
+
+class Polygon {
+    value =1;
+    constructor() {
+      this.name = "Polygon";
+      console.log(this.name);
+    }
+
+    say() {
+      console.log(`Pppppppolygon  ${this.value}`);
+    }
+
+    sayArrow = () => console.log(this.value);
+}
+  
+class Rectangle {
+    value = 2;
+    constructor() {
+      this.name = "Rectangle";
+      console.log(this.name);
+    }
+
+    say() {
+      console.log(`Rrrrrrrrrrrrrrrrectangle   ${this.value}`);
+    }
+    
+    sayArrow = () => console.log(this.value);
+}
+  
+class Square extends Polygon {
+    constructor() {
+      super();
+      this.say();
+    }
+}
+
+Object.setPrototypeOf(Square, Rectangle);
+const square = new Square();
+//console.dir(square);
+
+// Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
+// const newSquare = new Square();
+// console.dir(newSquare);
