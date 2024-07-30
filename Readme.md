@@ -22,7 +22,7 @@ create svg under certain namespace.
 
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
 
-5. prototype, \_\_proto\_\_, [[prototype]]
+5. prototype, ```__proto__```, ```[[prototype]]```
 
     \_\_proto\_\_ is [[prototype]], Object.setPrototypeOf() is setting the instance's \_\_proto\_\_
 
@@ -66,7 +66,7 @@ Rectangle<br>
 Pppppppolygon  2<br>
 2<br>
 
-<code>
+```
   class Polygon {
       value =1;
       constructor() {
@@ -109,4 +109,4 @@ Pppppppolygon  2<br>
   // Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
   // const newSquare = new Square();
   // console.dir(newSquare);
-</code>
+```
