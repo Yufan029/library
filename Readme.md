@@ -54,7 +54,7 @@ How to implement? <br>
     Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
 
 
-6. ```super()``` in the constructor of subclass is calling the constructor of the superclass which ```class.__proto__``` point to. <br>
+6. ```super()``` in the constructor of subclass is calling the constructor of the superclass which ```subclass.__proto__``` point to. <br>
 
 ```
   class Polygon {
@@ -101,14 +101,14 @@ How to implement? <br>
   // console.dir(newSquare);
 ```
 
-After resetting the ```Square.__proto__```, the ```super()``` will call constructor in Rectangle, <br>
-but the inheritance chain is not changed: <br>
+After resetting the ```Square.__proto__```, the ```super()``` will call constructor in ```Rectangle```, <br>
+but the inheritance chain is not changed, which is based on prototypal inheritance, which is ```Square.prototype``` point to: <br>
     ```square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.```<br>
 
-The value is initilized before ```super()``` in the Rectangle, then copy to the new instance.<br>
-The ```super()``` is running the constructor which Square.```__proto__``` point to.<br>
+The ```value``` is initilized before ```constructor()``` in the Rectangle, which is called by ```super()```, then copy to the new instance.<br>
+The ```super()``` is running the ```constructor``` which ```Square.__proto__``` point to.<br>
 The ```say()``` function is found through the inheritance chain, so the ```Polygon.say()``` being found, but using the new created ```value``` for the new instance.<br>
-One thing worth to note is that, the arrow function, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.<br>
+One thing worth to note is that, the __arrow function__, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.<br>
 
 So the result is:<br>
 ````
