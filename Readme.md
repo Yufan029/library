@@ -22,38 +22,41 @@ create svg under certain namespace.
 
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
 
+
 5. prototype, ```__proto__```, ```[[prototype]]```
 
-    \_\_proto\_\_ is [[prototype]], Object.setPrototypeOf() is setting the instance's \_\_proto\_\_
+```__proto__``` is ```[[prototype]]```, ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
 
-    prototype is an ordinary property.
+prototype is an ordinary property.
 
 Every Function has a prototype property.
 
-Every Object has a \_\_proto\_\_ property.
+Every Object has a ```__proto__``` property.
 
-So every function has not only prototype property, but also \_\_proto\_\_ property. Function is an Object.
+So every function has not only prototype property, but also ```__proto__``` property. Function is an Object.
 
 The inheritance looks like this:
 
-    instance --> Instance.prototype --> Object.prototype --> null
+    ```instance --> Instance.prototype --> Object.prototype --> null```
 
 
-how to implement?
+How to implement?
 
-    When you create a new instance based on the factory function or class Instance, it will assign the Instance.prototype property to the new created instance's __proto__(which is [[prototype]]).
+    When you create a new instance based on the factory function or class Instance, it will assign the Instance.prototype property to the new created instance's ```__proto__```(which is ```[[prototype]]```).
     
+    ```
     instance.__proto__ === Instance.prototype;
 
     instance.__proto__.__proto__ === Instance.prototype.__proto__ === Object.prototype;
 
     instance.__proto__.__proto__.__proto__ === object.prototype.__proto__ === null;
+    ```
+
+    ```Object.getPrototypeOf(instance)```, this is getting the ```__proto__```, which is ```[[prototype]]```, not the instance's prototype property.
 
 
-    Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
-
-6. super() in the subclass is calling the constructor of the class which class.\_\_proto\_\_ point to. <br>
-After resetting the Square.\_\_proto\_\_, the super() will call constructor in Rectangle, <br>
+6. ```super()``` in the subclass is calling the constructor of the class which ```class.__proto__``` point to. <br>
+After resetting the ```Square.__proto__```, the ```super()``` will call constructor in Rectangle, <br>
 but the inheritance chain is not changed, square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.<br>
 
 The value is initilized before super() in the Rectangle, then copy to the new instance.<br>
