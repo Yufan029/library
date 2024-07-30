@@ -67,46 +67,46 @@ Pppppppolygon  2<br>
 2<br>
 
 <code>
-class Polygon {
-    value =1;
-    constructor() {
-      this.name = "Polygon";
-      console.log(this.name);
-    }
+  class Polygon {
+      value =1;
+      constructor() {
+        this.name = "Polygon";
+        console.log(this.name);
+      }
 
-    say() {
-      console.log(`Pppppppolygon  ${this.value}`);
-    }
+      say() {
+        console.log(`Pppppppolygon  ${this.value}`);
+      }
 
-    sayArrow = () => console.log(this.value);
-}
+      sayArrow = () => console.log(this.value);
+  }
   
-class Rectangle {
-    value = 2;
-    constructor() {
-      this.name = "Rectangle";
-      console.log(this.name);
-    }
+  class Rectangle {
+      value = 2;
+      constructor() {
+        this.name = "Rectangle";
+        console.log(this.name);
+      }
 
-    say() {
-      console.log(`Rrrrrrrrrrrrrrrrectangle   ${this.value}`);
-    }
+      say() {
+        console.log(`Rrrrrrrrrrrrrrrrectangle   ${this.value}`);
+      }
+      
+      sayArrow = () => console.log(this.value);
+  }
     
-    sayArrow = () => console.log(this.value);
-}
-  
-class Square extends Polygon {
-    constructor() {
-      super();
-      this.say();
-    }
-}
+  class Square extends Polygon {
+      constructor() {
+        super();
+        this.say();
+      }
+  }
 
-Object.setPrototypeOf(Square, Rectangle);
-const square = new Square();
-//console.dir(square);
+  Object.setPrototypeOf(Square, Rectangle);
+  const square = new Square();
+  //console.dir(square);
 
-// Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
-// const newSquare = new Square();
-// console.dir(newSquare);
+  // Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
+  // const newSquare = new Square();
+  // console.dir(newSquare);
 </code>
