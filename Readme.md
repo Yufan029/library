@@ -29,12 +29,12 @@ create svg under certain namespace.
 
 ```prototype``` is an ordinary property.
 
-    Every Function has a ```prototype``` property.
+    Every Function has a prototype property.
 
-    Every Object has a ```__proto__``` property.
+    Every Object has a __proto__ property.
 
-    So every function has not only ```prototype``` property, but also ```__proto__``` property. Function is an Object.
-    
+    So every function has not only prototype property, but also __proto__ property. Function is an Object.
+
 
 The inheritance looks like this:
 
