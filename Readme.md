@@ -102,7 +102,7 @@ How to implement?
 ```
 
 After resetting the ```Square.__proto__```, the ```super()``` will call constructor in Rectangle, <br>
-but the inheritance chain is not changed, <br>
+but the inheritance chain is not changed: <br>
     ```square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.```<br>
 
 The value is initilized before ```super()``` in the Rectangle, then copy to the new instance.<br>
