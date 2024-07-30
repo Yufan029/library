@@ -24,15 +24,15 @@ create svg under certain namespace.
 
 5. prototype, \_\_proto\_\_, [[prototype]]
 
-    __proto__ is [[prototype]], Object.setPrototypeOf() is setting the instance's __proto__
+    \_\_proto\_\_ is [[prototype]], Object.setPrototypeOf() is setting the instance's \_\_proto\_\_
 
     prototype is an ordinary property.
 
 Every Function has a prototype property.
 
-Every Object has a __proto__ property.
+Every Object has a \_\_proto\_\_ property.
 
-So every function has not only prototype property, but also __proto__ property. Function is an Object.
+So every function has not only prototype property, but also \_\_proto\_\_ property. Function is an Object.
 
 The inheritance looks like this:
 
@@ -52,20 +52,21 @@ how to implement?
 
     Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
 
-6. super() in the subclass is calling the constructor of the class which class.__proto__ point to. 
-After resetting the Square.__proto__, the super() will call constructor in Rectangle, 
-but the inheritance chain is not changed, square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.
+6. super() in the subclass is calling the constructor of the class which class.\_\_proto\_\_ point to. <br>
+After resetting the Square.\_\_proto\_\_, the super() will call constructor in Rectangle, <br>
+but the inheritance chain is not changed, square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.<br>
 
-The value is initilized before super() in the Rectangle, then copy to the new instance.
-The super() is running the constructor which Square.__proto__ point to.
-The say() function is found through the inheritance chain, so the Polygon.say() being found, but using the new created 'value' for the new instance.
-One thing worth to note is that, the arrow function, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.
+The value is initilized before super() in the Rectangle, then copy to the new instance.<br>
+The super() is running the constructor which Square.\_\_proto\_\_ point to.<br>
+The say() function is found through the inheritance chain, so the Polygon.say() being found, but using the new created 'value' for the new instance.<br>
+One thing worth to note is that, the arrow function, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.<br>
 
-So the result is:
-Rectangle
-Pppppppolygon  2
-2
+So the result is:<br>
+Rectangle<br>
+Pppppppolygon  2<br>
+2<br>
 
+<code>
 class Polygon {
     value =1;
     constructor() {
@@ -108,3 +109,4 @@ const square = new Square();
 // Object.setPrototypeOf(Square.prototype, Rectangle.prototype);
 // const newSquare = new Square();
 // console.dir(newSquare);
+</code>
