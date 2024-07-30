@@ -23,7 +23,7 @@ create svg under certain namespace.
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
 
 
-5. prototype, ```__proto__```, ```[[prototype]]```
+5. Difference between ```prototype```, ```__proto__```, ```[[prototype]]```
 
 ```__proto__``` is ```[[prototype]]```, ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
 
@@ -37,37 +37,37 @@ So every function has not only prototype property, but also ```__proto__``` prop
 
 The inheritance looks like this:
 
-    ```instance --> Instance.prototype --> Object.prototype --> null```
+    instance --> Instance.prototype --> Object.prototype --> null
 
 
 How to implement?
 
-    When you create a new instance based on the factory function or class Instance, it will assign the Instance.prototype property to the new created instance's ```__proto__```(which is ```[[prototype]]```).
+    When you create a new instance based on the factory function or class Instance,
+    it will assign the Instance.prototype property to the new created instance's __proto__(which is [[prototype]]).
     
-    ```
     instance.__proto__ === Instance.prototype;
 
     instance.__proto__.__proto__ === Instance.prototype.__proto__ === Object.prototype;
 
     instance.__proto__.__proto__.__proto__ === object.prototype.__proto__ === null;
-    ```
 
-    ```Object.getPrototypeOf(instance)```, this is getting the ```__proto__```, which is ```[[prototype]]```, not the instance's prototype property.
+    Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
 
 
 6. ```super()``` in the subclass is calling the constructor of the class which ```class.__proto__``` point to. <br>
 After resetting the ```Square.__proto__```, the ```super()``` will call constructor in Rectangle, <br>
-but the inheritance chain is not changed, square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.<br>
+but the inheritance chain is not changed, <br>
+    square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.<br>
 
-The value is initilized before super() in the Rectangle, then copy to the new instance.<br>
-The super() is running the constructor which Square.\_\_proto\_\_ point to.<br>
-The say() function is found through the inheritance chain, so the Polygon.say() being found, but using the new created 'value' for the new instance.<br>
+The value is initilized before ```super()``` in the Rectangle, then copy to the new instance.<br>
+The ```super()``` is running the constructor which Square.```__proto__``` point to.<br>
+The ```say()``` function is found through the inheritance chain, so the ```Polygon.say()``` being found, but using the new created ```value``` for the new instance.<br>
 One thing worth to note is that, the arrow function, which is bound to the new created instance, which is not in the prototypal chain, it is copied to the new created instance directly.<br>
 
 So the result is:<br>
-Rectangle<br>
-Pppppppolygon  2<br>
-2<br>
+    Rectangle<br>
+    Pppppppolygon  2<br>
+    2<br>
 
 ```
   class Polygon {
