@@ -54,7 +54,7 @@ How to implement?
     Object.getPrototypeOf(instance), this is getting the __proto__, which is [[prototype]], not the instance's prototype property.
 
 
-6. ```super()``` in the subclass is calling the constructor of the class which ```class.__proto__``` point to. <br>
+6. ```super()``` in the constructor of subclass is calling the constructor of the superclass which ```class.__proto__``` point to. <br>
 
 ```
   class Polygon {
@@ -104,7 +104,7 @@ How to implement?
 After resetting the ```Square.__proto__```, the ```super()``` will call constructor in Rectangle, <br>
 but the inheritance chain is not changed, <br>
     ```square --> Square.prototype --> Polygon.prototype --> Object.prototype --> null.```<br>
-    
+
 The value is initilized before ```super()``` in the Rectangle, then copy to the new instance.<br>
 The ```super()``` is running the constructor which Square.```__proto__``` point to.<br>
 The ```say()``` function is found through the inheritance chain, so the ```Polygon.say()``` being found, but using the new created ```value``` for the new instance.<br>
