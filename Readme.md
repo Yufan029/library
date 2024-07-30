@@ -23,17 +23,17 @@ create svg under certain namespace.
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
 
 
-5. Difference between ```prototype```, ```__proto__```, ```[[prototype]]```
+5. Difference between ```prototype```, ```__proto__``` and ```[[prototype]]```
 
-```__proto__``` is ```[[prototype]]``` same thing. ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
+```__proto__``` is ```[[prototype]]```, same thing. ```Object.setPrototypeOf()``` is setting the instance's ```__proto__```
 
-prototype is an ordinary property.
+```prototype``` is an ordinary property.
 
-Every Function has a prototype property.
+Every Function has a ```prototype``` property.
 
 Every Object has a ```__proto__``` property.
 
-So every function has not only prototype property, but also ```__proto__``` property. Function is an Object.
+So every function has not only ```prototype``` property, but also ```__proto__``` property. Function is an Object.
 
 The inheritance looks like this:
 
@@ -41,9 +41,8 @@ The inheritance looks like this:
 
 
 How to implement?
-
     When you create a new instance based on the factory function or class Instance,
-    it will assign the Instance.prototype property to the new created instance's __proto__(which is [[prototype]]).
+    it will assign the ```Instance.prototype``` property to the new created ```instance.__proto__```(which is ```[[prototype]]```).
     
     instance.__proto__ === Instance.prototype;
 
