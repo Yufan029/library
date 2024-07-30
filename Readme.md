@@ -68,7 +68,7 @@ How to implement? <br>
         console.log(`Pppppppolygon  ${this.value}`);
       }
 
-      sayArrow = () => console.log(this.value);
+      sayArrow = () => console.log(`Polygon ${this.value}`);
   }
   
   class Rectangle {
@@ -82,7 +82,7 @@ How to implement? <br>
         console.log(`Rrrrrrrrrrrrrrrrectangle   ${this.value}`);
       }
       
-      sayArrow = () => console.log(this.value);
+      sayArrow = () => console.log(`Rectangle ${this.value}`);
   }
     
   class Square extends Polygon {
@@ -114,5 +114,5 @@ So the result is:<br>
 ````
     Rectangle<br>
     Pppppppolygon  2<br>
-    2<br>
+    Rectangle 2<br>
 ````
