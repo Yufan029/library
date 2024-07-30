@@ -22,7 +22,7 @@ create svg under certain namespace.
 
 4. Not adding the remove from library array, since the data will be refresh every time when reload.
 
-5. prototype, __proto__, [[prototype]]
+5. prototype, \_\_proto\_\_, [[prototype]]
 
     __proto__ is [[prototype]], Object.setPrototypeOf() is setting the instance's __proto__
 
