@@ -90,6 +90,8 @@ function renderScreen(myLibrary) {
         const deleteSvg = deleteIcon();
 
         // add index for deletion in future.
+        readSvg.dataset.index = index;
+        unreadIconSvg.dataset.index = index;
         deleteSvg.dataset.index = index;
     
         if (alreadyRead) {
@@ -107,13 +109,17 @@ function renderScreen(myLibrary) {
     
         divElement.appendChild(operations);
     
-        readSvg.addEventListener('click', () => {
+        readSvg.addEventListener('click', (e) => {
+            const index = e.currentTarget.dataset.index;
+            myLibrary.books[index].alreadyRead = false;
             toggleBookReadStatus(readSvg, '.book-unread');
             toggleBookInfo('already read', 'not read yet');
             divElement.classList.remove('read-background');
         });
     
-        unreadIconSvg.addEventListener('click', () => {
+        unreadIconSvg.addEventListener('click', (e) => {
+            const index = e.currentTarget.dataset.index;
+            myLibrary.books[index].alreadyRead = true;
             toggleBookReadStatus(unreadIconSvg, '.book-read');
             toggleBookInfo('not read yet', 'already read');
             divElement.classList.add('read-background');
@@ -122,7 +128,7 @@ function renderScreen(myLibrary) {
         // have some issue, after delete the index changed, 
         // but the associated data-attribute is not change, will fix later.
         deleteSvg.addEventListener('click', (e) => {
-            const index = e.target.dataset.index;
+            const index = e.currentTarget.dataset.index;
             myLibrary.books.splice(index, 1);
             renderLibrary();
         });
